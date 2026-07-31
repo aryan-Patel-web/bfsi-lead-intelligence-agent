@@ -1,0 +1,53 @@
+# Relevance AI Business Profile Report
+
+## Company Overview:
+
+* **Name & Description:** Relevance AI is a software development company specializing in no-code AI workforce automation platforms.  They build and manage AI teams comprised of agents and custom-built AI tools.
+* **Website & Location:** (Website URL not provided)  Headquarters: Surry Hills, Australia; Additional office: San Francisco, USA.
+* **Industry & Size:** Software Development; 57 employees.
+* **Mission:** To be the central platform for AI workforces, empowering users to automate tasks and processes without coding.
+* **Products and Services:**
+    * No-code platform for building and managing AI agents.
+    * Pre-built AI agents (e.g., Bosh, the sales agent).
+    * AI agent teams.
+    * Customizable AI tools.
+    * Integrations with various platforms.
+    * Support for multiple Large Language Models (LLMs) from OpenAI, Google, Meta, and Anthropic.
+    * Data storage options in US, EU, and AU.  SOC 2 (Type 2) certified and GDPR compliant.
+
+
+## Lead Profile Summary: Benedek Zajkas
+
+* **Professional Experience:**
+    * **Growth Operations Lead, Relevance AI (August 2021 – Present):** Focuses on growth and operational aspects of the company's AI-powered solutions.
+    * **Business Partner I Advisor, RAMI Fashion:** (Details not provided)
+    * **BizOps Lead & Co-founder, Kindly (digital bank):** (Details not provided)
+    * **Sales Operations Manager, Intland Software:** (Details not provided)
+    * **Management Consultant, Deloitte Hungary:** (Details not provided)
+    * **Market Research Analyst, EasyPark Group:** (Details not provided)
+
+    His career trajectory showcases a progression from market research and consulting to sales operations and now growth operations within the technology sector, demonstrating a consistent focus on strategic growth and operational efficiency.
+
+* **Education:**
+    * Master's degree in Strategy Management and Innovation, DTU – Technical University of Denmark.
+    * Postgraduate Exchange in Entrepreneurship/Global business/Strategic planning, The University of Sydney Business School.
+    * Bachelor's degree in Engineering, Budapest University of Technology and Economics.
+
+* **Skills & Expertise:**
+    * Sales Operations
+    * Business Development
+    * Strategy
+    * Operations Management
+    * Market Research
+    * AI-powered solutions
+    * Growth Strategy
+    * Scalable process implementation
+
+* **Key Insights:**
+    * Extensive experience across diverse industries (Fintech, Software, Fashion).
+    * Proven track record of implementing scalable processes leading to significant year-over-year growth.
+    * Expertise in market research and analysis, leading to successful market entry strategies and acquisitions.
+    * Strong educational background in strategy, innovation, and entrepreneurship.
+    * His current role at Relevance AI aligns perfectly with his skills and experience, making him a valuable asset to the company's growth.  His understanding of both operational efficiency and strategic growth makes him an ideal partner for collaborations focused on scaling AI solutions.
+
+
