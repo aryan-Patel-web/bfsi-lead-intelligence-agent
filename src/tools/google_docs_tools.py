@@ -3,6 +3,8 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 from src.utils import get_google_credentials
 
+
+
 class GoogleDocsManager:
     def __init__(self):
         self.docs_service = build('docs', 'v1', credentials=get_google_credentials())
