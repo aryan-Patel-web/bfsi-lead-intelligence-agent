@@ -17,6 +17,8 @@ If the link is relative (e.g., "/blog"), prepend it with {main_url} to form an a
 * Ensure the summary is organized in markdown format.
 """
 
+
+
 LEAD_SEARCH_REPORT_PROMPT = f"""
 # **Role:**
 
@@ -52,6 +54,8 @@ This report should include the following:
 * Final report should be well-organized in markdown format, with distinct sections for the company overview and lead profile. 
 * Return only final report without any additional text or preamble.
 """
+
+
 
 BLOG_ANALYSIS_PROMPT = """ 
 # **Role:**
