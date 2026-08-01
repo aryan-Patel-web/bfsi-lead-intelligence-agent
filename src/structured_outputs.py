@@ -1,6 +1,10 @@
 from pydantic import BaseModel, Field
 
 
+
+
+
+
 class WebsiteData(BaseModel):
     summary: str = Field(description="Summary of the company website content.")
     blog_url: str = Field(description="The main blog URL of the company.")
