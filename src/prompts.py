@@ -19,6 +19,17 @@ If the link is relative (e.g., "/blog"), prepend it with {main_url} to form an a
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 LEAD_SEARCH_REPORT_PROMPT = f"""
 # **Role:**
 
@@ -54,6 +65,16 @@ This report should include the following:
 * Final report should be well-organized in markdown format, with distinct sections for the company overview and lead profile. 
 * Return only final report without any additional text or preamble.
 """
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -114,6 +135,19 @@ Provide 3–5 actionable recommendations to improve the blog, focusing on increa
 Return only Final report in markdown format, without any preamble or additional text.
 """
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 YOUTUBE_ANALYSIS_PROMPT = """
 # **Role:**
 
@@ -173,6 +207,14 @@ Provide 3–5 actionable recommendations to improve the channel, focusing on inc
 Return only the final report in a markdown format, without any preamble or additional text.
 """
 
+
+
+
+
+
+
+
+
 NEWS_ANALYSIS_PROMPT = """
 # **Role:**
 
@@ -204,6 +246,15 @@ Your tasks will include the following:
 * Report should be structured in valid markdown format.
 * **Only include relevant news from the last {number_months} months. Today’s date is {date}.**
 """
+
+
+
+
+
+
+
+
+
 
 DIGITAL_PRESENCE_REPORT_PROMPT = """
 # **Role:**  
@@ -250,6 +301,15 @@ Provide a consolidated set of actionable steps to improve the company's digital 
 - Use bullet points to organize the report where appropriate. Avoid lengthy paragraphs by breaking down information into easily digestible sections.   
 - **Ignore and do not include the sections where data is not provided.** 
 """
+
+
+
+
+
+
+
+
+
 
 GLOBAL_LEAD_RESEARCH_REPORT_PROMPT = """
 # **Role:**  
@@ -307,6 +367,15 @@ Construct a detailed analysis of the company's digital presence, including:
 - Use bullet points to organize the report where appropriate. Avoid lengthy paragraphs by breaking down information into easily digestible sections.   
 """
 
+
+
+
+
+
+
+
+
+
 SCORE_LEAD_PROMPT = """
 # **Role & Task**  
 You are an expert lead scorer for **ElevateAI Marketing Solutions**, a marketing agency that specializes in AI-driven content optimization, SEO, and social media automation. 
@@ -361,6 +430,16 @@ You will receive a comprehensive report that includes the lead’s company profi
 ### **Output Instructions**  
 Based on the scores for each category, calculate the **average lead score** and output only the final score out of 10. Do not include any additional explanation or commentary.
 """
+
+
+
+
+
+
+
+
+
+
 
 GENERATE_OUTREACH_REPORT_PROMPT = """
 # **Role:**  
@@ -495,6 +574,17 @@ We look forward to partnering with you to power GreenFuture Tech’s digital tra
 - Highlight actionable insights and measurable outcomes to demonstrate the effectiveness of AI-driven strategies. 
 """
 
+
+
+
+
+
+
+
+
+
+
+
 PROOF_READER_PROMPT = """
 # **Role:**  
 You are a **Professional Proofreader and Quality Analyst** specializing in ensuring the accuracy, structure, and completeness of professional documents. Your task is to analyze the final outreach report, ensuring it meets the highest standards of professionalism, clarity, and effectiveness.  
@@ -526,6 +616,22 @@ Your primary responsibilities are:
 - Return the **revised final report** in markdown format, without any additional text or preamble. 
 - Your goal is to refine the existing report, not rewrite it. Keep changes minimal but impactful.   
 """
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 PERSONALIZE_EMAIL_PROMPT = """
 # **Role:**  
@@ -587,6 +693,18 @@ Aymen
 * **DON’T:** just praise the lead—focus on their experiences and background and on their company information.
 """
 
+
+
+
+
+
+
+
+
+
+
+
+
 GENERATE_SPIN_QUESTIONS_PROMPT = """
 Write personalized multiple SPIN selling questions for the provided lead, demonstrating a clear understanding of their company and specific marketing or sales challenges. Focus on how **ElevateAI Marketing Solutions** can help address these issues effectively. Keep the questions concise and highly relevant.  
 
@@ -604,6 +722,20 @@ Our AI solutions save you time and resources while delivering consistent, authen
 - Avoid generic or vague inquiries; base them on the provided lead details and agency capabilities.  
 - Focus on uncovering pain points, implications, and opportunities where ElevateAI's solutions can add value. 
 """
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 WRITE_INTERVIEW_SCRIPT_PROMPT = """
 # **Role & Task:**  
