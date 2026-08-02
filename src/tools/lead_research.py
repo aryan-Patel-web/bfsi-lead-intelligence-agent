@@ -3,6 +3,8 @@ from .base.search_tools import google_search
 from .base.linkedin_tools import extract_linkedin_url, scrape_linkedin
 
 
+
+
 SUMMARIZE_LINKEDIN_PROFILE = """
 # Role  
 You are an Expert Lead profile creator with a particular expertise for generating a lead profile from a from a scraped linkedin.  

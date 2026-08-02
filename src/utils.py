@@ -6,6 +6,9 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 
+
+
+
 # Set the scopes for Google API
 SCOPES = [
     # For using GMAIL API
@@ -16,6 +19,8 @@ SCOPES = [
     "https://www.googleapis.com/auth/documents",
     "https://www.googleapis.com/auth/drive"
 ]
+
+
 
 
 def get_current_date():
@@ -57,6 +62,9 @@ def save_reports_locally(reports):
         file_path = os.path.join(reports_folder, f"{report.title}.txt")
         with open(file_path, "w", encoding="utf-8") as file:
             file.write(report.content)
+
+
+
 
 def get_llm_by_provider(llm_provider, model):
     # Else find provider
