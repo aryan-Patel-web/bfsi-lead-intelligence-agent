@@ -8,15 +8,14 @@ This project extends an open-source multi-CRM sales outreach automation framewor
 
 ---
 
-
 ## 🧠 What This Project Does
 
 Instead of a human manually researching, qualifying, and following up with every lead, this agent does it end-to-end:
 
-1. **Fetches new leads** from a connected CRM
-2. **Researches** each lead automatically (profile data, company info, context)
+1. **Fetches new leads** from a connected CRM (HubSpot, Airtable, or Google Sheets)
+2. **Researches** each lead automatically — company background, LinkedIn presence, news, and YouTube/digital footprint
 3. **Extracts structured fields** from unstructured lead conversations (similar to how a bank might auto-fill an underwriting form)
-4. **Scores and qualifies** each lead using an LLM + RAG-grounded criteria
+4. **Scores and qualifies** each lead using an LLM + RAG-grounded criteria, retrieved from a vector store of past case studies
 5. **Generates personalized outreach material** — reports, emails, and call-prep scripts
 6. **Writes results back to the CRM** automatically, with follow-up scheduling for unqualified/pending leads
 
@@ -28,27 +27,29 @@ Everything runs as a single **stateful LangGraph pipeline** with 14+ nodes and c
 
 | Feature | Description |
 |---|---|
-| 🔗 **Multi-CRM Integration** | Works with HubSpot, Airtable, Google Sheets, or any custom CRM via a standardized schema |
+| 🔗 **Multi-CRM Integration** | Works with HubSpot, Airtable, Google Sheets, or any custom CRM via a standardized `lead_loader_base` schema |
 | 🧩 **Agentic LangGraph Workflow** | Stateful, multi-node graph with conditional branching (qualified vs. not qualified, more leads vs. done) |
 | 📋 **Structured Field Extraction** | Pydantic-validated parsing of unstructured lead data into schema-bound fields — mirrors underwriting/PD-form autofill |
-| 📊 **RAG-Grounded Lead Scoring** | Retrieves similar past case studies to ground qualification decisions in real context, not guesswork |
+| 📊 **RAG-Grounded Lead Scoring** | Retrieves similar past case studies from a local Chroma vector store to ground qualification decisions in real context, not guesswork |
 | 🔄 **Automated CRM Writebacks** | Lead status, reports, and next steps are written back to the CRM automatically |
-| ✉️ **Personalized Outreach Generation** | Auto-generates tailored emails and interview/call-prep scripts per lead |
-| 🗂️ **Local + Cloud Report Storage** | Reports saved locally and synced to Google Docs for team visibility |
+| ✉️ **Personalized Outreach Generation** | Auto-generates tailored emails, blog/digital-presence/news analysis reports, and interview/call-prep scripts per lead |
+| 🗂️ **Local + Cloud Report Storage** | Reports saved locally to `reports/` and synced to Google Docs for team visibility |
 
 ---
 
 ## 🏗️ Architecture
 
 ```
-Fetch Leads → Research (LinkedIn / Web / News) → Structured Extraction
-        → RAG-Grounded Scoring → [Qualified?] 
-              ├── Yes → Generate Outreach Materials → Update CRM
-              └── No  → Save Report → Update CRM
-        → Loop back until no leads remain
+Fetch Leads → Research (LinkedIn / Web / News / YouTube) → Structured Extraction
+       → RAG-Grounded Scoring → [Qualified?]
+             ├── Yes → Generate Outreach Materials → Update CRM
+             └── No  → Save Report → Update CRM
+       → Loop back until no leads remain
 ```
 
 Built on **LangGraph's** `StateGraph`, so every step is a discrete, testable node with clear inputs/outputs — easy to extend or swap out individual pieces (e.g. change the CRM, change the scoring logic) without touching the rest of the pipeline.
+
+See [`docs/system-workflow.md`](docs/system-workflow.md) for the full node-by-node breakdown and `workflow.png` for a visual diagram.
 
 ---
 
@@ -57,7 +58,8 @@ Built on **LangGraph's** `StateGraph`, so every step is a discrete, testable nod
 - **LangChain** & **LangGraph** — agent orchestration and workflow graph
 - **Pydantic** — structured, validated data extraction
 - **Google Gemini** (Flash/Pro) — LLM + embeddings (swappable with OpenAI/Groq)
-- **RAG** — case-study retrieval for grounded decision-making
+- **ChromaDB** — local vector store for RAG-grounded case-study retrieval
+- **Google Docs API** — cloud report sync
 - **Python 3.9+**
 
 ---
@@ -82,23 +84,68 @@ cp .env.example .env
 python main.py
 ```
 
-You'll need API keys for your chosen LLM provider (Gemini/OpenAI/Groq), your CRM of choice, and a search API — full details in `.env.example`.
+You'll need API keys for your chosen LLM provider (Gemini/OpenAI/Groq), your CRM of choice (HubSpot/Airtable/Google Sheets), and a search API — full details in `.env.example`.
 
 ---
 
 ## 📁 Project Structure
 
 ```
-├── main.py                  # Entry point
-├── src/
-│   ├── graph.py              # LangGraph pipeline definition
-│   ├── nodes.py               # All node logic (research, scoring, outreach, CRM update)
-│   ├── state.py                # Shared graph state schema
-│   ├── structured_outputs.py    # Pydantic models for structured extraction
-│   └── prompts.py                # LLM prompts
-├── data/                     # Sample lead/case-study data
-├── reports/                  # Generated sample reports
-└── docs/                     # Workflow + customization guides
+├── main.py                          # Entry point
+├── workflow.png                     # Visual pipeline diagram
+├── requirements.txt
+├── .env.example
+│
+├── data/
+│   ├── agency-description.md        # Agency context used for grounding
+│   └── case_studies/                # Past case studies for RAG scoring
+│       ├── ecotrend.md
+│       ├── spark-retail.md
+│       └── wellspring-nutrition.md
+│
+├── database/                        # Local Chroma vector store
+│   └── chroma.sqlite3
+│
+├── docs/
+│   ├── customization.md             # How to extend/customize the pipeline
+│   └── system-workflow.md           # Detailed node-by-node workflow docs
+│
+├── reports/                         # Sample generated reports
+│   ├── General Lead Research Report.txt
+│   ├── Global Lead Analysis Report.txt
+│   ├── Digital Presence Report.txt
+│   ├── Blog Analysis Report.txt
+│   ├── News Analysis Report.txt
+│   ├── Youtube Analysis Report.txt
+│   ├── Interview Script.txt
+│   └── Personalized Email.txt
+│
+└── src/
+    ├── graph.py                     # LangGraph pipeline definition
+    ├── nodes.py                     # All node logic (research, scoring, outreach, CRM update)
+    ├── state.py                     # Shared graph state schema
+    ├── structured_outputs.py        # Pydantic models for structured extraction
+    ├── prompts.py                   # LLM prompts
+    ├── utils.py                     # Shared helper functions
+    │
+    └── tools/
+        ├── company_research.py      # Company/web research tool
+        ├── google_docs_tools.py     # Google Docs sync
+        ├── lead_research.py         # Lead-level research orchestration
+        ├── rag_tool.py              # RAG retrieval over case studies
+        ├── youtube_tools.py         # YouTube presence/analysis tool
+        │
+        ├── base/
+        │   ├── gmail_tools.py           # Email sending
+        │   ├── linkedin_tools.py        # LinkedIn research
+        │   ├── markdown_scraper_tool.py # Web scraping → markdown
+        │   └── search_tools.py          # General web search
+        │
+        └── leads_loader/
+            ├── airtable.py
+            ├── google_sheets.py
+            ├── hubspot.py
+            └── lead_loader_base.py       # Standard CRM interface
 ```
 
 ---
@@ -112,8 +159,6 @@ You'll need API keys for your chosen LLM provider (Gemini/OpenAI/Groq), your CRM
 5. **Multi-agent handoff** — split research, scoring, and outreach into separate specialized sub-agents coordinated by a supervisor node, for better modularity and easier testing
 
 ---
-
-
 
 ## 👤 Author
 
