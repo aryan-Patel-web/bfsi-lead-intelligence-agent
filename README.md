@@ -113,9 +113,7 @@ You'll need API keys for your chosen LLM provider (Gemini/OpenAI/Groq), your CRM
 
 ---
 
-## 🙏 Credits
 
-This project is adapted from the excellent open-source [sales-outreach-automation-langgraph](https://github.com/kaymen99/sales-outreach-automation-langgraph) by [Aymen Kerrour](https://github.com/kaymen99). Core LangGraph architecture and CRM integration patterns are from the original project; BFSI-specific adaptations, structured extraction, and roadmap items above are original additions.
 
 ## 👤 Author
 
