@@ -3,6 +3,8 @@ from langchain_community.document_loaders import DirectoryLoader
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_chroma import Chroma
 
+
+
 def get_vector_store():
     """Get or create the vector store."""
     database_path = "database"
@@ -18,6 +20,8 @@ def get_vector_store():
         vectorstore = Chroma.from_documents(docs, embeddings, persist_directory=database_path)
     
     return vectorstore
+
+
 
 def fetch_similar_case_study(description):
     """Fetch the most similar case study to the given description."""
