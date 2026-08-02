@@ -14,6 +14,7 @@ def extract_linkedin_url_base(search_results):
 
 
 
+
 def extract_linkedin_url(search_results):
     EXTRACT_LINKEDIN_URL_PROMPT = """
     **Role:**  
