@@ -47,6 +47,9 @@ def research_lead_company(linkedin_url):
         "locations": company_profile.get('locations', [])
     }
 
+
+
+
 def generate_company_profile(company_linkedin_info, scraped_website):
     # Get company profile summary
     inputs = (
